@@ -57,7 +57,7 @@ type TimeoutTask struct {
 	Deadline time.Time
 }
 
-var _ hsm.Task = TimeoutTask{}
+var _ hsm.ConcurrentTask = (*TimeoutTask)(nil)
 
 func (TimeoutTask) Type() hsm.TaskType {
 	return TaskTypeTimeout
@@ -105,7 +105,7 @@ type InvocationTask struct {
 	Destination string
 }
 
-var _ hsm.Task = InvocationTask{}
+var _ hsm.Task = (*InvocationTask)(nil)
 
 func (InvocationTask) Type() hsm.TaskType {
 	return TaskTypeInvocation
@@ -136,7 +136,7 @@ type BackoffTask struct {
 	Deadline time.Time
 }
 
-var _ hsm.Task = BackoffTask{}
+var _ hsm.Task = (*BackoffTask)(nil)
 
 func (BackoffTask) Type() hsm.TaskType {
 	return TaskTypeBackoff
@@ -167,7 +167,7 @@ type CancelationTask struct {
 	Destination string
 }
 
-var _ hsm.Task = CancelationTask{}
+var _ hsm.Task = (*CancelationTask)(nil)
 
 func (CancelationTask) Type() hsm.TaskType {
 	return TaskTypeCancelation
@@ -198,7 +198,7 @@ type CancelationBackoffTask struct {
 	Deadline time.Time
 }
 
-var _ hsm.Task = CancelationBackoffTask{}
+var _ hsm.Task = (*CancelationBackoffTask)(nil)
 
 func (CancelationBackoffTask) Type() hsm.TaskType {
 	return TaskTypeCancelationBackoff
